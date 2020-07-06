@@ -9,8 +9,8 @@ namespace SelecaoFamilias.Domain.Specifications.Familias
         public void ValidarCriterio(Familia familia)
         {
             var quantidadeDependentesMenorDe18Anos = familia.ObterQuantidadeDeDependentesMenorDe18Anos();
-            if (quantidadeDependentesMenorDe18Anos > 0 && quantidadeDependentesMenorDe18Anos < 3)
-                familia.AdicionarCriterio(Pontos);
+            //if (quantidadeDependentesMenorDe18Anos > 0 && quantidadeDependentesMenorDe18Anos < 3)
+            //    familia.AdicionarCriterio(Pontos);
         }
     }
 }

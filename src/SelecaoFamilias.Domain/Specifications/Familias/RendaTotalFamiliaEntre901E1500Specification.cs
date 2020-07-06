@@ -9,8 +9,8 @@ namespace SelecaoFamilias.Domain.Specifications.Familias
         public void ValidarCriterio(Familia familia)
         {
             var rendaTotal = familia.ObterRendaTotal();
-            if (rendaTotal >= 901 && rendaTotal <= 1500)
-                familia.AdicionarCriterio(Pontos);
+            //if (rendaTotal >= 901 && rendaTotal <= 1500)
+            //    familia.AdicionarCriterio(Pontos);
         }
     }
 }

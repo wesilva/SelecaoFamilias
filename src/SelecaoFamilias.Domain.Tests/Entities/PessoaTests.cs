@@ -1,30 +1,40 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SelecaoFamilias.Domain.Entities;
+using SelecaoFamilias.Domain.Enums;
+using SelecaoFamilias.Domain.ValueObjects;
 using System;
-using System.Linq;
 
 namespace SelecaoFamilias.Domain.Tests.Entities
 {
     [TestClass]
     public class PessoaTests
     {
-        public Pessoa Pessoa { get; set; }
-
-        [TestMethod]
-        public void PessoaConsistente_Valid_true() 
+        private readonly EntityId _idFamilia;
+        private readonly Nome _nome;
+        private readonly Renda _renda;
+        public PessoaTests()
         {
-            Pessoa = new Pessoa("Wellington", Enums.ETipoType.Pretendente, new DateTime(1991, 7, 23), 15);
-
-            Assert.IsTrue(Pessoa.EhValido());
+            _idFamilia = new EntityId(Guid.NewGuid());
+            _nome = new Nome("Wellington");
+            _renda = new Renda(0);
         }
 
         [TestMethod]
-        public void PessoaNome_Valid_false()
+        public void DeveRetornarErroQuandoPessoaForMenorDe18Anos() 
         {
-            Pessoa = new Pessoa("", Enums.ETipoType.Pretendente, DateTime.Now.AddDays(5), 15);
+            var idade = new Idade(DateTime.Now.AddYears(-17));
+            var pessoa = new Pessoa(_idFamilia, _nome, ETipoType.Pretendente, idade, _renda);
 
-            Assert.IsFalse(Pessoa.EhValido());
-            Assert.IsTrue(Pessoa.ValidationResult.Errors.Any(e => e.ErrorMessage == "O nome é obrigatório"));
+            Assert.IsTrue(pessoa.EhMenorDe18Anos());
+        }
+
+        [TestMethod]
+        public void DeveRetornarSucessoQuandoPessoaForMaiorDe18Anos()
+        {
+            var idade = new Idade(DateTime.Now.AddYears(-18));
+            var pessoa = new Pessoa(_idFamilia, _nome, ETipoType.Pretendente, idade, _renda);
+
+            Assert.IsFalse(pessoa.EhMenorDe18Anos());
         }
     }
 }

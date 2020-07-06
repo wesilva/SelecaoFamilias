@@ -8,8 +8,8 @@ namespace SelecaoFamilias.Domain.Specifications.Familias
 
         public void ValidarCriterio(Familia familia)
         {
-            if (familia.ObterQuantidadeDeDependentesMenorDe18Anos() >= 3)
-                familia.AdicionarCriterio(Pontos);
+            //if (familia.ObterQuantidadeDeDependentesMenorDe18Anos() >= 3)
+            //    familia.AdicionarCriterio(Pontos);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace SelecaoFamilias.Domain.Specifications.Familias
         public void ValidarCriterio(Familia familia)
         {
             var idadePretendente = familia.ObterIdadePretendente();
-            if (idadePretendente >= 30 && idadePretendente <= 44)
-                familia.AdicionarCriterio(Pontos);
+            //if (idadePretendente >= 30 && idadePretendente <= 44)
+            //    familia.AdicionarCriterio(Pontos);
         }
     }
 }

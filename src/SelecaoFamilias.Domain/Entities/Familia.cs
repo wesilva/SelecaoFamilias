@@ -1,23 +1,24 @@
-﻿using SelecaoFamilias.Domain.Core.Entities;
+﻿using Flunt.Validations;
+using SelecaoFamilias.Domain.Core.Entities;
 using SelecaoFamilias.Domain.Enums;
+using SelecaoFamilias.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
-using FluentValidation;
 using System.Linq;
 
 namespace SelecaoFamilias.Domain.Entities
 {
-    public class Familia : Entity<Familia>
+    public class Familia : Entity
     {
-        public int PontuacaoTotal { get; private set; }
-        public int QuantidadeCriteriosAtendidos { get; private set; }
-
         private IList<Pessoa> _pessoas;
         public Familia(EStatusType status)
         {
+            Id = new EntityId(Guid.NewGuid());
             Status = status;
             _pessoas = new List<Pessoa>();
         }
 
+        public EntityId Id { get; private set; }
         public EStatusType Status { get; private set; }
         public IReadOnlyCollection<Pessoa> Pessoas { get { return _pessoas.ToList(); } }
 
@@ -26,27 +27,20 @@ namespace SelecaoFamilias.Domain.Entities
         public override bool EhValido()
         {
             Validar();
-            return ValidationResult.IsValid;
+            return this.Valid;
         }
 
-        public void AdicionarPessoa(Pessoa pessoa)
+        public void AdicionarPessoa(Nome nome, ETipoType tipo, Idade idade, Renda renda)
         {
-            if (!ValidarPessoa(pessoa)) return;
+            var pessoa = new Pessoa(Id, nome, tipo, idade, renda);
+            if (pessoa.Invalid) 
+                AddNotifications(pessoa);
             _pessoas.Add(pessoa);
-        }
-
-        public void AdicionarCriterio(int pontos)
-        {
-            if(pontos > 0)
-            {
-                PontuacaoTotal += pontos;
-                QuantidadeCriteriosAtendidos++;
-            }
         }
 
         public decimal ObterRendaTotal()
         {
-           return _pessoas.Select(x => x.Valor).Sum();
+           return _pessoas.Select(x => x.Renda.Valor).Sum();
         }
 
         public int ObterIdadePretendente()
@@ -59,29 +53,27 @@ namespace SelecaoFamilias.Domain.Entities
             return _pessoas.Count(x => x.EhDependente() && x.EhMenorDe18Anos());
         }
 
-        private bool ValidarPessoa(Pessoa pessoa)
-        {
-            if (pessoa.EhValido()) return true;
-
-            foreach (var error in pessoa.ValidationResult.Errors)
-            {
-                ValidationResult.Errors.Add(error);
-            }
-            return false;
-        }
-
         private void Validar()
         {
+            ValidarSePossuiConjugue();
             ValidarSePossuiPretendente();
-
-            ValidationResult = Validate(this);
         }
 
         private void ValidarSePossuiPretendente()
         {
-            RuleFor(f => f._pessoas.Count(p => p.EhPretendente()))
-                .Equal(0)
-                .WithMessage("A família precisa ter um pretendente");    
+            int quantidadePretendente = _pessoas.Count(p => p.EhPretendente());
+            AddNotifications(new Contract()
+                .Requires()
+                .AreEquals(quantidadePretendente, 1, "Familia.pessoa", "Deve ter somente 1 pretendente")                
+            );
+        }
+        private void ValidarSePossuiConjugue()
+        {
+            int quantidadeConjugue = _pessoas.Count(p => p.EhConjugue());
+            AddNotifications(new Contract()
+                .Requires()
+                .AreEquals(quantidadeConjugue, 1, "Familia.pessoa", "Deve ter somente 1 conjugue")
+            );
         }
     }
 }
