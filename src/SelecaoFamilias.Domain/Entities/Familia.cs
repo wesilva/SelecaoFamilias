@@ -11,7 +11,7 @@ namespace SelecaoFamilias.Domain.Entities
     public class Familia : Entity
     {
         private IList<Pessoa> _pessoas;
-        public Familia(EStatusType status)
+        public Familia(Status status)
         {
             Id = new EntityId(Guid.NewGuid());
             Status = status;
@@ -19,7 +19,7 @@ namespace SelecaoFamilias.Domain.Entities
         }
 
         public EntityId Id { get; private set; }
-        public EStatusType Status { get; private set; }
+        public Status Status { get; private set; }
         public IReadOnlyCollection<Pessoa> Pessoas { get { return _pessoas.ToList(); } }
 
         private Familia() {}

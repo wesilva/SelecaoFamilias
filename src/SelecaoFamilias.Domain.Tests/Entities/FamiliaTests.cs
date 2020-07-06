@@ -14,10 +14,12 @@ namespace SelecaoFamilias.Domain.Tests.Entities
         private readonly Nome _nome;
         private readonly Idade _idade;
         private readonly Renda _renda;
+        private readonly Status _status;
 
         public FamiliaTests()
         {
-            _familia = new Familia(EStatusType.CadastroValido);
+            _status = new Status(1, "Cadastro Válido", true);
+            _familia = new Familia(_status);
             _nome = new Nome("Wellington");
             _idade = new Idade(DateTime.Now.AddYears(-28));
             _renda = new Renda(0);
@@ -26,7 +28,7 @@ namespace SelecaoFamilias.Domain.Tests.Entities
         public Pessoa Pessoa { get; set; }
 
         [TestMethod]
-        public void DeveRetornarErroQuandoFamiliaNaoTemPretendenteOuTemMaisDeUm() 
+        public void DeveRetornarErroQuandoFamiliaNaoTemPretendenteOuTemMaisDeUm()
         {
             _familia.AdicionarPessoa(_nome, ETipoType.Conjugue, _idade, _renda);
             Assert.IsFalse(_familia.EhValido());
