@@ -11,13 +11,16 @@ namespace SelecaoFamilias.Application
     {
         private readonly IFamiliaRepository _familiaRepository;
         private readonly IFamiliaFactory _familiaFactory;
+        private readonly ICalculoDePontosDosCriteriosAppService _calculoDePontosDosCriteriosAppService;
 
         public FamiliaAppService(
             IFamiliaRepository familiaRepository,
-            IFamiliaFactory familiaFactory)
+            IFamiliaFactory familiaFactory,
+            ICalculoDePontosDosCriteriosAppService calculoDePontosDosCriteriosAppService)
         {
             _familiaRepository = familiaRepository;
             _familiaFactory = familiaFactory;
+            _calculoDePontosDosCriteriosAppService = calculoDePontosDosCriteriosAppService;
         }
 
         public void CadastrarFamilia(FamiliaViewModel familiaViewModel)
@@ -41,8 +44,8 @@ namespace SelecaoFamilias.Application
             }
             _familiaRepository.Adicionar(familia);
 
-            //if (familia.Status.StatusValido)
-            //    await _calculoDePontosDosCriteriosAtendidos.Executar(familia);
+            if (familia.Status.StatusValido)
+                _calculoDePontosDosCriteriosAppService.CalcularPontosDeFamiliasAptas(familia);
         }
     }
 }

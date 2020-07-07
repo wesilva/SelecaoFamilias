@@ -3,7 +3,7 @@ using SelecaoFamilias.Domain.Entities;
 
 namespace SelecaoFamilias.Application.Interfaces
 {
-    interface ICalculoDePontosDosCriteriosAppService
+    public interface ICalculoDePontosDosCriteriosAppService
     {
         void CalcularPontosDeFamiliasAptas(Familia familia);
     }

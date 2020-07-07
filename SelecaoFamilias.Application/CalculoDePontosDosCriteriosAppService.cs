@@ -10,6 +10,7 @@ namespace SelecaoFamilias.Application
     {
         private readonly IProcessadorCriterios _processadorCriterios;
         private readonly IFamiliaAptaRepository _familiaAptaRepository;
+        
         public CalculoDePontosDosCriteriosAppService(
             IProcessadorCriterios processadorCriterios,
             IFamiliaAptaRepository familiaAptaRepository)
