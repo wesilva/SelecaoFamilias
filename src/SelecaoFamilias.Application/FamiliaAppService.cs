@@ -1,5 +1,4 @@
-﻿using Flunt.Notifications;
-using SelecaoFamilias.Application.Interfaces;
+﻿using SelecaoFamilias.Application.Interfaces;
 using SelecaoFamilias.Application.ViewModels;
 using SelecaoFamilias.Domain.Interfaces.Repository;
 using SelecaoFamilias.Domain.ValueObjects;
@@ -7,7 +6,7 @@ using SelecaoFamilias.Sorteio.Interfaces;
 
 namespace SelecaoFamilias.Application
 {
-    public class FamiliaAppService : Notifiable, IFamiliaAppService
+    public class FamiliaAppService : IFamiliaAppService
     {
         private readonly IFamiliaRepository _familiaRepository;
         private readonly IFamiliaFactory _familiaFactory;
@@ -23,10 +22,10 @@ namespace SelecaoFamilias.Application
             _calculoDePontosDosCriteriosAppService = calculoDePontosDosCriteriosAppService;
         }
 
-        public void CadastrarFamilia(FamiliaViewModel familiaViewModel)
+        public ResultViewModel CadastrarFamilia(FamiliaViewModel familiaViewModel)
         {
+            var resultViewModel = new ResultViewModel();
             var status = _familiaRepository.ObterStatus(familiaViewModel.StatusId);
-
             var familia = _familiaFactory.Criar(status);
 
             foreach (var pessoa in familiaViewModel.Pessoas)
@@ -39,13 +38,18 @@ namespace SelecaoFamilias.Application
             }
             if (!familia.EhValido())
             {
-                AddNotifications(familia.Notifications);
-                return;
+                foreach (var notification in familia.Notifications)
+                {
+                    resultViewModel.AdicionarMensagem(notification.Message);
+                }
+                return resultViewModel;
             }
             _familiaRepository.Adicionar(familia);
 
             if (familia.Status.StatusValido)
                 _calculoDePontosDosCriteriosAppService.CalcularPontosDeFamiliasAptas(familia);
+
+            return resultViewModel;
         }
     }
 }

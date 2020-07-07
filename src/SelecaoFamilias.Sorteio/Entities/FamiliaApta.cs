@@ -19,7 +19,7 @@ namespace SelecaoFamilias.Sorteio.Entities
             CriteriosAtendidos = new CriteriosAtendidos(criteriosAtendidos);
             PontuacaoTotal = CriteriosAtendidos.PontuacaoTotal;
         }
-
+        protected FamiliaApta() {}
         public EntityId Id { get; private set; }
 
         public EntityId FamiliaId { get; private set; }

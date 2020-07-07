@@ -10,6 +10,7 @@ namespace SelecaoFamilias.Sorteio.ValueObjects
         public Pontuacao PontuacaoTotal { get; private set; }
         public int QuantidadeCriteriosAtendidos { get; private set; }
 
+        protected CriteriosAtendidos() {}
         public CriteriosAtendidos(IEnumerable<ICriterio> criteriosAtendidos)
         {
             QuantidadeCriteriosAtendidos = criteriosAtendidos.Count();

@@ -14,26 +14,17 @@ namespace SelecaoFamilias.Infra.Data.Context
         public DbSet<Status> Status { get; set; }
         public DbSet<FamiliaApta> FamiliasAptas { get; set; }
 
+        public SelecaoFamiliaContext(DbContextOptions options) : base(options)
+        {
+        }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AddConfiguration(new PessoaMapping());
             modelBuilder.AddConfiguration(new FamiliaMapping());
             modelBuilder.AddConfiguration(new StatusMapping());
             modelBuilder.AddConfiguration(new FamiliaAptaMapping());
             base.OnModelCreating(modelBuilder);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //var config = new ConfigurationBuilder()
-            //    .SetBasePath(Directory.GetCurrentDirectory())
-            //    .AddJsonFile("appsettings.json")
-            //    .Build();
-
-            //optionsBuilder.UseSqlServer(config.GetConnectionString("SelecaoFamiliasConnection"));
-
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=SelecaoFamilias;Integrated Security=True");
         }
     }
 }

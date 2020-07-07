@@ -8,8 +8,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\SelecaoFamilias.Domain\SelecaoFamilias.Domain.csproj" />
-    <ProjectReference Include="..\src\SelecaoFamilias.Sorteio\SelecaoFamilias.Sorteio.csproj" />
+    <ProjectReference Include="..\SelecaoFamilias.Domain\SelecaoFamilias.Domain.csproj" />
+    <ProjectReference Include="..\SelecaoFamilias.Sorteio\SelecaoFamilias.Sorteio.csproj" />
   </ItemGroup>
 
 </Project>

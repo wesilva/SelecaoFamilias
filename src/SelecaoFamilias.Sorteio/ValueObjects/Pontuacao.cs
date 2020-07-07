@@ -10,6 +10,7 @@ namespace SelecaoFamilias.Sorteio.ValueObjects
         {
             Valor = valor;
         }
+        protected Pontuacao() { }
 
         public Pontuacao Somar(Pontuacao pontuacao) => new Pontuacao(this.Valor + pontuacao.Valor);
 

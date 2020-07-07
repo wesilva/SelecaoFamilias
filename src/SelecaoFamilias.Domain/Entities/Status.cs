@@ -16,7 +16,7 @@ namespace SelecaoFamilias.Domain.Entities
             Descricao = descricao;
             StatusValido = statusValido;
         }
-
+        protected Status() { }
         public virtual ICollection<Familia> Familias { get; set;}
 
         public override bool EhValido()
