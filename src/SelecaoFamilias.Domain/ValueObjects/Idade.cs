@@ -6,9 +6,9 @@ namespace SelecaoFamilias.Domain.ValueObjects
 {
     public class Idade : ValueObject
     {
-        public Idade(DateTime data)
+        public Idade(DateTime dataNascimento)
         {
-            DataNascimento = data;
+            DataNascimento = dataNascimento;
 
             AddNotifications(new Contract()
                 .Requires()

@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelecaoFamilias.Domain.Tests", "src\SelecaoFamilias.Domain.Tests\SelecaoFamilias.Domain.Tests.csproj", "{1B85B9B1-B6EC-4FAD-9ADF-D4BCF6714AF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelecaoFamilias.Infra.Data", "src\SelecaoFamilias.Infra.Data\SelecaoFamilias.Infra.Data.csproj", "{ACD75018-CDF1-4866-AEC2-5BA1F66DD4ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{1B85B9B1-B6EC-4FAD-9ADF-D4BCF6714AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B85B9B1-B6EC-4FAD-9ADF-D4BCF6714AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B85B9B1-B6EC-4FAD-9ADF-D4BCF6714AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACD75018-CDF1-4866-AEC2-5BA1F66DD4ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACD75018-CDF1-4866-AEC2-5BA1F66DD4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACD75018-CDF1-4866-AEC2-5BA1F66DD4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACD75018-CDF1-4866-AEC2-5BA1F66DD4ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

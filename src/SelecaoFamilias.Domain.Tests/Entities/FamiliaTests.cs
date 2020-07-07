@@ -11,16 +11,16 @@ namespace SelecaoFamilias.Domain.Tests.Entities
     public class FamiliaTests
     {
         private readonly Familia _familia;
-        private readonly Nome _nome;
+        private readonly NomeCompleto _nome;
         private readonly Idade _idade;
         private readonly Renda _renda;
-        private readonly Status _status;
+        private readonly StatusId _statusId;
 
         public FamiliaTests()
         {
-            _status = new Status(1, "Cadastro Válido", true);
-            _familia = new Familia(_status);
-            _nome = new Nome("Wellington");
+            _statusId = new StatusId(1);
+            _familia = new Familia(_statusId);
+            _nome = new NomeCompleto("Wellington");
             _idade = new Idade(DateTime.Now.AddYears(-28));
             _renda = new Renda(0);
             _familia.AdicionarPessoa(_nome, ETipoType.Dependente, _idade, _renda);

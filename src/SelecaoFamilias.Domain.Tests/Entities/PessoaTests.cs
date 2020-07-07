@@ -10,12 +10,12 @@ namespace SelecaoFamilias.Domain.Tests.Entities
     public class PessoaTests
     {
         private readonly EntityId _idFamilia;
-        private readonly Nome _nome;
+        private readonly NomeCompleto _nome;
         private readonly Renda _renda;
         public PessoaTests()
         {
             _idFamilia = new EntityId(Guid.NewGuid());
-            _nome = new Nome("Wellington");
+            _nome = new NomeCompleto("Wellington");
             _renda = new Renda(0);
         }
 

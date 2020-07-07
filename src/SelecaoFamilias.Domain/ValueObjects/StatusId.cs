@@ -1,15 +1,14 @@
 ﻿using SelecaoFamilias.Domain.Core.ValueObjects;
-using System;
 
 namespace SelecaoFamilias.Domain.ValueObjects
 {
-    public class EntityId : ValueObject
+    public class StatusId : ValueObject
     {
-        public EntityId(Guid id)
+        public StatusId(int id)
         {
             Id = id;          
         }
 
-        public Guid Id { get; private set; }
+        public int Id { get; private set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SelecaoFamilias.Domain.Core.Entities;
+using System.Collections.Generic;
 
 namespace SelecaoFamilias.Domain.Entities
 {
@@ -14,6 +15,8 @@ namespace SelecaoFamilias.Domain.Entities
             Descricao = descricao;
             StatusValido = statusValido;
         }
+
+        public virtual ICollection<Familia> Familias { get; set;}
 
         public override bool EhValido()
         {

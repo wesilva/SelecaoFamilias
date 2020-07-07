@@ -7,7 +7,7 @@ namespace SelecaoFamilias.Domain.Entities
 {
     public class Pessoa : Entity
     {
-        public Pessoa(EntityId familiaId, Nome nome, ETipoType tipo, Idade idade, Renda renda)
+        public Pessoa(EntityId familiaId, NomeCompleto nome, ETipoType tipo, Idade idade, Renda renda)
         {
             FamiliaId = familiaId;
             Id = new EntityId(Guid.NewGuid());
@@ -18,16 +18,15 @@ namespace SelecaoFamilias.Domain.Entities
 
             AddNotifications(nome, idade, renda);
         }
+        protected Pessoa() { }
 
-        public EntityId FamiliaId { get; private set; }
+        public virtual EntityId FamiliaId { get; private set; }
         public EntityId Id { get; set; }
-        public Nome Nome { get; private set; }
+        public NomeCompleto Nome { get; private set; }
         public ETipoType Tipo { get; private set; }
         public Idade Idade { get; private set; }
         public Renda Renda { get; private set; }
-        public Familia Familia { get; private set; }
-
-        private Pessoa() { }
+        public virtual Familia Familia { get; private set; }
 
         public override bool EhValido()
         {

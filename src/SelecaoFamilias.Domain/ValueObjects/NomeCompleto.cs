@@ -1,21 +1,20 @@
 ﻿using Flunt.Validations;
 using SelecaoFamilias.Domain.Core.ValueObjects;
-using System;
 
 namespace SelecaoFamilias.Domain.ValueObjects
 {
-    public class Nome : ValueObject
+    public class NomeCompleto : ValueObject
     {
-        public Nome(string nome)
+        public NomeCompleto(string nome)
         {
-            Texto = nome;
+            Nome = nome;
 
             AddNotifications(new Contract()
                 .Requires()
-                .IsNotNullOrEmpty(Texto, "Nome.Texto", "Nome é obrigatório")
+                .IsNotNullOrEmpty(Nome, "Nome.Texto", "Nome é obrigatório")
             );
         }
 
-        public string Texto { get; private set; }
+        public string Nome { get; private set; }
     }
 }

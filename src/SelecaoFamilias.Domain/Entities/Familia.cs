@@ -11,18 +11,22 @@ namespace SelecaoFamilias.Domain.Entities
     public class Familia : Entity
     {
         private IList<Pessoa> _pessoas;
-        public Familia(Status status)
+        public Familia(StatusId statusId)
         {
             Id = new EntityId(Guid.NewGuid());
-            Status = status;
+            StatusId = statusId;
             _pessoas = new List<Pessoa>();
         }
+        protected Familia() {}
 
         public EntityId Id { get; private set; }
-        public Status Status { get; private set; }
-        public IReadOnlyCollection<Pessoa> Pessoas { get { return _pessoas.ToList(); } }
+        public virtual StatusId StatusId { get; private set; }
 
-        private Familia() {}
+        //public IReadOnlyCollection<Pessoa> Pessoas { get { return _pessoas.ToList(); } }
+        public virtual ICollection<Pessoa> Pessoas { get; set; }
+
+        public virtual Status Status { get; private set; }
+
 
         public override bool EhValido()
         {
@@ -30,7 +34,7 @@ namespace SelecaoFamilias.Domain.Entities
             return this.Valid;
         }
 
-        public void AdicionarPessoa(Nome nome, ETipoType tipo, Idade idade, Renda renda)
+        public void AdicionarPessoa(NomeCompleto nome, ETipoType tipo, Idade idade, Renda renda)
         {
             var pessoa = new Pessoa(Id, nome, tipo, idade, renda);
             if (pessoa.Invalid) 

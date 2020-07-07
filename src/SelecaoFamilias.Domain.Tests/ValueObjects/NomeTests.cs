@@ -12,14 +12,14 @@ namespace SelecaoFamilias.Domain.Tests.ValueObjects
         [DataRow(null)]
         public void DeveRetornarErrorQuandoNomeForNuloOuVazio(string nome)
         {
-            var renda = new Nome(nome);
+            var renda = new NomeCompleto(nome);
             Assert.IsTrue(renda.Invalid);
         }
 
         [TestMethod]
         public void DeveRetornarSucessoQuandoNomeNaoForNuloOuVazio()
         {
-            var renda = new Nome("Wellington");
+            var renda = new NomeCompleto("Wellington");
             Assert.IsTrue(renda.Valid);
         }
     }
