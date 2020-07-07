@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SelecaoFamilias.Sorteio.Interfaces
 {
-    interface IProcessadorCriterios
+    public interface IProcessadorCriterios
     {
         IEnumerable<ICriterio> ObterCriteriosAtendidos(Familia familia);
     }

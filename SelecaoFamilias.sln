@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelecaoFamilias.Infra.Data"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelecaoFamilias.Sorteio", "src\SelecaoFamilias.Sorteio\SelecaoFamilias.Sorteio.csproj", "{87BE21FA-8D04-4438-8C8F-97CF94C0D346}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelecaoFamilias.Application", "SelecaoFamilias.Application\SelecaoFamilias.Application.csproj", "{0D28C4F7-9350-410B-9588-4C31E35B37F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{87BE21FA-8D04-4438-8C8F-97CF94C0D346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87BE21FA-8D04-4438-8C8F-97CF94C0D346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87BE21FA-8D04-4438-8C8F-97CF94C0D346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D28C4F7-9350-410B-9588-4C31E35B37F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D28C4F7-9350-410B-9588-4C31E35B37F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D28C4F7-9350-410B-9588-4C31E35B37F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D28C4F7-9350-410B-9588-4C31E35B37F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
