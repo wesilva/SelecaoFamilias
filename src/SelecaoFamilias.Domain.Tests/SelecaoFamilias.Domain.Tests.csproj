@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SelecaoFamilias.Domain\SelecaoFamilias.Domain.csproj" />
+    <ProjectReference Include="..\SelecaoFamilias.Infra.Data\SelecaoFamilias.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

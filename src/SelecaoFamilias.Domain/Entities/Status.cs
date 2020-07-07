@@ -1,15 +1,16 @@
 ﻿using SelecaoFamilias.Domain.Core.Entities;
+using SelecaoFamilias.Domain.ValueObjects;
 using System.Collections.Generic;
 
 namespace SelecaoFamilias.Domain.Entities
 {
     public class Status : Entity
     {
-        public int Id { get; }
-        public string Descricao { get; }
+        public StatusId Id { get; }
+        public Descricao Descricao { get; }
         public bool StatusValido { get; }
 
-        public Status(int id, string descricao, bool statusValido)
+        public Status(StatusId id, Descricao descricao, bool statusValido)
         {
             Id = id;
             Descricao = descricao;
@@ -20,7 +21,7 @@ namespace SelecaoFamilias.Domain.Entities
 
         public override bool EhValido()
         {
-           return true;
+            return true;
         }
     }
 }

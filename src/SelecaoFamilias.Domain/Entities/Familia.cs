@@ -11,10 +11,10 @@ namespace SelecaoFamilias.Domain.Entities
     public class Familia : Entity
     {
         private IList<Pessoa> _pessoas;
-        public Familia(StatusId statusId)
+        public Familia(Status status)
         {
             Id = new EntityId(Guid.NewGuid());
-            StatusId = statusId;
+            Status = status;
             _pessoas = new List<Pessoa>();
         }
         protected Familia() {}
@@ -22,8 +22,7 @@ namespace SelecaoFamilias.Domain.Entities
         public EntityId Id { get; private set; }
         public virtual StatusId StatusId { get; private set; }
 
-        //public IReadOnlyCollection<Pessoa> Pessoas { get { return _pessoas.ToList(); } }
-        public virtual ICollection<Pessoa> Pessoas { get; set; }
+        public IReadOnlyCollection<Pessoa> Pessoas { get { return _pessoas.ToList(); } }
 
         public virtual Status Status { get; private set; }
 
@@ -42,14 +41,14 @@ namespace SelecaoFamilias.Domain.Entities
             _pessoas.Add(pessoa);
         }
 
-        public decimal ObterRendaTotal()
+        public Renda ObterRendaTotal()
         {
-           return _pessoas.Select(x => x.Renda.Valor).Sum();
+           return new Renda(_pessoas.Select(x => x.Renda.Valor).Sum());
         }
 
-        public int ObterIdadePretendente()
+        public Idade ObterIdadePretendente()
         {
-            return _pessoas.FirstOrDefault(x => x.EhPretendente()).ObterIdade();
+            return _pessoas.FirstOrDefault(x => x.EhPretendente()).Idade;
         }
 
         public int ObterQuantidadeDeDependentesMenorDe18Anos()

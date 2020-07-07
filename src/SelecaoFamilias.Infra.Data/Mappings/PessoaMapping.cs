@@ -11,6 +11,8 @@ namespace SelecaoFamilias.Infra.Data.Mappings
         {
             builder.ToTable("Pessoas");
 
+            builder.HasNoKey();
+
             builder.OwnsOne(f => f.Id, id =>
             {
                 id.Property(f => f.Id)

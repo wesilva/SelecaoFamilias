@@ -11,6 +11,8 @@ namespace SelecaoFamilias.Infra.Data.Mappings
         {
             builder.ToTable("Familias");
 
+            builder.HasNoKey();
+
             builder.OwnsOne(f => f.Id, id =>
             {
                 id.Property(f => f.Id)
@@ -23,7 +25,7 @@ namespace SelecaoFamilias.Infra.Data.Mappings
                 statusId.Property(f => f.Id)
                 .HasColumnName("StatusId")
                 .IsRequired();
-            });       
+            });
 
             //builder.HasOne(f => f.Status)
             //    .WithMany(f => f.Familias)

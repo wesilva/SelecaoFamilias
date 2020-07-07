@@ -10,6 +10,8 @@ namespace SelecaoFamilias.Infra.Data.Mappings
         public override void Map(EntityTypeBuilder<Status> builder)
         {
             builder.ToTable("Status");
+            
+            builder.HasKey(s => s.Id);
 
             builder.Property(s => s.Id)
                 .HasColumnName("Id")

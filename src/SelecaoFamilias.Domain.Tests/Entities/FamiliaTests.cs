@@ -14,12 +14,12 @@ namespace SelecaoFamilias.Domain.Tests.Entities
         private readonly NomeCompleto _nome;
         private readonly Idade _idade;
         private readonly Renda _renda;
-        private readonly StatusId _statusId;
+        private readonly Status _status;
 
         public FamiliaTests()
         {
-            _statusId = new StatusId(1);
-            _familia = new Familia(_statusId);
+            _status = new Status(new StatusId(1), new Descricao("Já possui uma casa"), false);
+            _familia = new Familia(_status);
             _nome = new NomeCompleto("Wellington");
             _idade = new Idade(DateTime.Now.AddYears(-28));
             _renda = new Renda(0);

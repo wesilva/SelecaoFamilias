@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SelecaoFamilias.Domain.Core\SelecaoFamilias.Domain.Core.csproj" />
     <ProjectReference Include="..\SelecaoFamilias.Domain\SelecaoFamilias.Domain.csproj" />
+    <ProjectReference Include="..\SelecaoFamilias.Sorteio\SelecaoFamilias.Sorteio.csproj" />
   </ItemGroup>
 
 </Project>
